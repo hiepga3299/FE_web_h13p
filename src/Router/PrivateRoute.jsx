@@ -1,16 +1,13 @@
-import React, { useContext } from "react";
+import React from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
-import { AuthContext } from "../Context/AuthProvider";
-
 const PrivateRoute = (props) => {
-  console.log(props);
-  // Add your authentication logic here
-  const { user } = useContext(AuthContext);
-  if (user.status === false) {
-    return (
-      //   <div>Ban chua dang nhap</div>
-      <Navigate to="/login" />
-    );
+  const checkToken = () => {
+    const token = localStorage.getItem("token");
+    return token ? true : false;
+  };
+  const hasToken = checkToken();
+  if (hasToken === false) {
+    return <Navigate to="/login" />;
   }
   return (
     <Routes>

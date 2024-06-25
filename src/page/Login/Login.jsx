@@ -1,32 +1,28 @@
 import React, { useContext } from "react";
 import "./login.scss";
-import axios from "../../Axios/axios";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Context/AuthProvider";
-import { jwtDecode } from "jwt-decode";
+import { loginAPI } from "../../Services/userService";
 
 const Login = () => {
   const { login } = useContext(AuthContext);
   const navigate = useNavigate();
-  const loginAPI = async (data) => {
-    await axios
-      .post("/login", data)
-      .then((res) => {
-        console.log(jwtDecode(res.data));
-        localStorage.setItem("token", res.data);
-        navigate("/");
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     const username = e.target.username.value;
     const password = e.target.password.value;
-    await loginAPI({ username, password });
-    login(username);
+
+    loginAPI({ username, password }).then((res) => {
+      if (res && res.data && res.data.token) {
+        let username = res.data.username;
+        let token = res.data.token;
+        let data = { status: true, username: username, token: token };
+        localStorage.setItem("token", token);
+        navigate("/");
+        login(data);
+      }
+    });
   };
 
   return (
