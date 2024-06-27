@@ -1,9 +1,10 @@
-import React, { useContext } from "react";
-import { AuthContext } from "../../Context/AuthProvider";
+import React from "react";
+// import { AuthContext } from "../../Context/AuthProvider";
+// import "./home.scss";
 
 const Home = () => {
-  const { user } = useContext(AuthContext);
-  return <div>Hello {user.username}</div>;
+  // const { user } = useContext(AuthContext);
+  return <div>Home</div>;
 };
 
 export default Home;
