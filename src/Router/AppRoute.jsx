@@ -17,9 +17,13 @@ function AppRoute() {
           <div className="layout-menu">
             <Menu />
           </div>
-          <Outlet />
+          <div className="layout-content">
+            <Outlet />
+          </div>
         </div>
-        <Footer />
+        <div className="layout-footer">
+          <Footer />
+        </div>
       </div>
     );
   };

@@ -1,0 +1,25 @@
+.menu{
+    .item{
+        // display: flex;
+        // flex-direction: column;
+        gap: 10px;
+        margin: 0 10px 20px 10px;
+        .title{
+            font-size: 1rem;
+            font-weight: 600;
+            color: rgb(121, 120, 120);
+        }
+
+        .listItem{
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            height: 35px;
+            padding: 7px 7px;
+            &:hover{
+                border-radius: 10px;
+                border: 1px solid black;
+            }
+        }
+    }
+}

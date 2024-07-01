@@ -1,5 +1,6 @@
 import React from "react";
 import "./navbar.scss";
+import { Link } from "react-router-dom";
 
 function Navbar() {
   return (
@@ -17,6 +18,9 @@ function Navbar() {
             alt=""
           />
           <span>John Doe</span>
+          <Link to="login" className="button-logout">
+            Thoát
+          </Link>
         </div>
       </div>
     </nav>
